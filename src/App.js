@@ -8,13 +8,13 @@ function App() {
 
   useEffect(() => {
 
-      api.get('projects').then(response => {
+      api.get('repositories').then(response => {
         setRepo(response.data);
       });
   }, []);
 
   async function handleAddRepository() {
-    const response = await api.post('projects', {
+    const response = await api.post('repositories', {
       title: `Novo repositorio: ${Date.now()}`,
       url: 'https://github.com/Vinidevsantos/Desafio-03-Conceitos-do-ReactJS',
       techs: ['Repository', 'desafio']
@@ -27,7 +27,7 @@ function App() {
 
   async function handleRemoveRepository(id) {
       
-    await api.delete(`projects/${id}`);
+    await api.delete(`repositories/${id}`);
     setRepo(repo.filter(repository => repository.id !== id ));
   }
 
